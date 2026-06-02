@@ -71,7 +71,7 @@ export const AnchorButton: FC<AnchorButtonProps> = ({
     addActivity({
       id: activityId,
       type: "anchor",
-      status: "submitted",
+      status: "requested",
       createdAt: Date.now(),
       confessionId,
     });
@@ -81,6 +81,7 @@ export const AnchorButton: FC<AnchorButtonProps> = ({
 
       if (result.success && result.txHash) {
         updateActivity(activityId, {
+          status: "submitted",
           txHash: result.txHash,
         });
 
